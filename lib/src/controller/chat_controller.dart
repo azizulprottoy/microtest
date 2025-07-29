@@ -9,10 +9,11 @@ import 'package:chat_module/chat_module.dart';
 import '../../app_enums.dart';
 import '../file_view/arguments/file_view_argument.dart';
 import '../file_view/views/file_view_page.dart';
-import 'image_picker.dart';
-import 'services.dart';
+import '../utils/image_picker.dart';
 
 import 'package:video_player/video_player.dart';
+
+import '../utils/services.dart';
 
 class ChatController extends GetxController {
 

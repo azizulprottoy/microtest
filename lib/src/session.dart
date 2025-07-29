@@ -1,4 +1,3 @@
-// chat_module/lib/src/session.dart
 import 'session_provider.dart';
 
 class Session {

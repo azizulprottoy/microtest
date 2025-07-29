@@ -252,7 +252,7 @@ class ChatPage extends StatelessWidget {
           children: [
             IconButton(
               icon: SvgPicture.asset(
-'assets/attach.svg',
+'packages/chat_module/assets/attach.svg',
                 color: Color(0xFF9B468A),
                 width: 24,
                 height: 24,
@@ -276,7 +276,7 @@ class ChatPage extends StatelessWidget {
             ),
             IconButton(
                 icon: SvgPicture.asset(
-                  'assets/send.svg',
+                  'packages/chat_module/assets/send.svg',
                   color: Color(0xFF9B468A),
                   width: 24,
                   height: 24,

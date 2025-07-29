@@ -35,7 +35,7 @@ class ChatAppBar extends StatelessWidget implements PreferredSizeWidget {
               // backgroundImage: profilePic != null && profilePic.isNotEmpty
               //     ? NetworkImage(profilePic)
               //     : const AssetImage('assets/images/doctor.png') as ImageProvider,
-              backgroundImage: const AssetImage('assets/images/doctor.png') as ImageProvider,
+              backgroundImage: const AssetImage('packages/chat_module/assets/images/doctor.png') as ImageProvider,
             );
           }),
 
