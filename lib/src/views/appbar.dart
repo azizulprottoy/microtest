@@ -27,15 +27,15 @@ class ChatAppBar extends StatelessWidget implements PreferredSizeWidget {
       title: Row(
         children: [
           Obx(() {
-            // final profilePic = controller.doctor.value.profilePic;
+             final profilePic = controller.doctor.value.profilePic;
 
             return CircleAvatar(
               radius: 22.5,
               backgroundColor: Colors.white,
-              // backgroundImage: profilePic != null && profilePic.isNotEmpty
-              //     ? NetworkImage(profilePic)
-              //     : const AssetImage('assets/images/doctor.png') as ImageProvider,
-              backgroundImage: const AssetImage('packages/chat_module/assets/images/doctor.png') as ImageProvider,
+              backgroundImage: profilePic != null && profilePic.isNotEmpty
+                  ? NetworkImage(profilePic)
+                  : const AssetImage('assets/images/doctor.png') as ImageProvider,
+              // backgroundImage: const AssetImage('packages/chat_module/assets/images/doctor.png') as ImageProvider,
             );
           }),
 
@@ -47,8 +47,7 @@ class ChatAppBar extends StatelessWidget implements PreferredSizeWidget {
               children: [
                 Obx(
                       () => Text(
-                    // controller.doctor.value.name ?? "Doctor",
-              'doctor',
+                     controller.doctor.value.name ?? "Doctor",
                     overflow: TextOverflow.ellipsis,
                     style: Get.textTheme.labelLarge?.copyWith(
                       fontWeight: FontWeight.w600,

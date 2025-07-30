@@ -5,16 +5,12 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:open_filex/open_filex.dart';
 import 'package:chat_module/chat_module.dart';
-
 import '../../app_enums.dart';
 import '../file_view/arguments/file_view_argument.dart';
 import '../file_view/views/file_view_page.dart';
 import '../utils/image_picker.dart';
-
 import 'package:video_player/video_player.dart';
-
 import '../utils/services.dart';
-
 class ChatController extends GetxController {
 
   final ChatRepository repo = Get.find();
@@ -28,7 +24,7 @@ class ChatController extends GetxController {
   final RxBool isCallPage = false.obs;
   RxList<Message> messages = <Message>[].obs;
   Timer? _typingTimer;
-
+  Rx<ChatDoctor> doctor = ChatDoctor(id: 0, name: '').obs;
   Rxn<RealtimeChat> rtc = Rxn();
   RxBool showAttachmentTooltip = false.obs;
   RxBool isDoctorOnline = false.obs;
@@ -59,10 +55,7 @@ class ChatController extends GetxController {
       onDoctorTyping: (isTyping) => isDoctorTyping.value = isTyping,
     );
 
-    // if (args.value.appointmentId != null) {
-    //   await _getAppointmentById();
-    // }
-
+    await _loadDoctor();
     await _loadMessages();
   }
 
@@ -72,10 +65,14 @@ class ChatController extends GetxController {
     super.onClose();
   }
 
-  // Future<void> _loadDoctor() async {
-  //   doctor.value = (await bookingRepo.getDoctorDetails(args.value.doctorId))
-  //       .fold((l) => Doctor(), (r) => r);
-  // }
+  Future<void> _loadDoctor() async {
+    try {
+      final chatDoctor = await BookingInfo.provider.getDoctorDetails(args.value.doctorId!);
+      doctor.value = chatDoctor!;
+    } catch (e) {
+      // _logger.e("Error loading doctor info", error: e);
+    }
+  }
   void _onScroll() {
     if (scrollController.position.pixels >= scrollController.position.maxScrollExtent - 100 &&
         !_isFetching && _hasMore) {
@@ -321,6 +318,7 @@ class ChatController extends GetxController {
     }
   }
 }
+
 
 class _VideoPlayerWidget extends StatefulWidget {
   final String videoUrl;

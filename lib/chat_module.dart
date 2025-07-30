@@ -15,3 +15,4 @@ export 'src/repository/chat_repo.dart';
 export 'src/models/chat_room.dart';
 export 'src/chat_bindings.dart';
 export 'src/domain/typedef.dart';
+export 'src/models/chat_doctor.dart';

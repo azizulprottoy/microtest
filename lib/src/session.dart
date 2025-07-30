@@ -14,3 +14,18 @@ class Session {
     return _provider!;
   }
 }
+
+class  BookingInfo{
+  static BookingInfoProvider? _provider;
+
+  static void inject(BookingInfoProvider provider) {
+    _provider = provider;
+  }
+
+  static BookingInfoProvider get provider {
+    if (_provider == null) {
+      throw Exception("SessionProvider not injected!");
+    }
+    return _provider!;
+  }
+}
